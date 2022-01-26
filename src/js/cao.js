@@ -1800,21 +1800,64 @@ const data = [
 
 // 1.Sukurk formą, kuri leis įrašyti vardą - jis bus išsaugojamas į cookies. Jei vardas jau egzistuoja - išmeta tik vardą ir mygtuką, su kuriuo cookies ištrinamas. Jei neegzistuoja - formą.
 
-document.querySelector("#forma6").addEventListener("submit", (e) => {
-  e.preventDefault;
-  const name = e.target.elements.name.value;
-  document.cookie = "name=" + name;
-  console.log(document.cookie);
-  if (document.cookie == "name=" + name) {
-    const h1 = document.createElement("h1");
-    h1.textContent = name;
-    const remove = document.createElement("button");
+// document.querySelector("#forma6").addEventListener("submit", (e) => {
+//   e.preventDefault;
+//   const name = e.target.elements.name.value;
+//   document.cookie = "name=" + name;
+//   console.log(document.cookie);
+//   if (document.cookie == "name=" + name) {
+//     const h1 = document.createElement("h1");
+//     h1.textContent = name;
+//     const remove = document.createElement("button");
 
-    document.querySelector("#forma6").append(h1, remove);
-  }
-});
+//     document.querySelector("#forma6").append(h1, remove);
+//   }
+// });
+
 // 2.Į localStorage, įrašykite savo vardą, pavardę, aprašymą, linkus į FB, G+, Twitter, linką į nuotrauką. Informaciją galite įrašyti per console'ę, arba naudojant kodą projekte pirmą kart užkraunant puslapį. Vėliau susikurkite puslapį, kuris atvaizduos šią informaciją būtent taip:
 
-localStorage.setItem();
+// localStorage.setItem();
 
 // 3.Sukurkite puslapį, kuriame būtų forma su vienu input - fullName. Įvedus vardą ir pavardę, juos padalina į dvi dalis (name ir surname). Vardą ir pavardę įdeda į objektą, o objektą - į array. Šį array išsaugo localStorage. Po forma, tegul būna lentelė, būtent joje atsivaizduoja informacija iš localStorage array.
+
+// Praktika su JS pažadais
+
+// 1.Parašykite pažadą, kuris visada resolve'insis po 5 sekundžių. Jam resolve - išoka alert "yes, veikia!". Pažado aprašyme teks naudoti setTimeOut.
+
+// const promise = new Promise(function(resolve, reject){
+//   setTimeout(() => resolve(), 5000)
+// })
+// promise.then(() => alert("yes, veikia!"))
+
+// 2.Pakoreguokite pirmą pratimą, kad būtų 4/5 tikimybė, jog resolve'ins po 5 sekundžių, ir 1/5 tikimybė, kad po 5 sekundžių bus reject.
+
+// const promise = new Promise(function(resolve, reject){
+//   const random = Math.ceil(Math.random()*5);
+//   setTimeout(() => {
+//     if(random == 1){
+//       reject()
+//     }else{
+//       resolve()
+//     }}, 5000)
+// })
+// promise
+// .then(() => alert("yes, veikia!"))
+// .catch(() => alert("something is bad!"))
+
+// 3.Then bendrauja su kitu then. Pakoreguokite antrą pratimą, kad jei resolve'inasi pirmas pažadas - pasileidžia then(), kuris paprasčiausiai grąžina žinutę , šią žinutę pagauna antrasis then() ir ją alertina. Prisiminkime - ką then() returnina, tą pasigauna kitas then() kaip parametrą. 
+
+// const promise = new Promise(function(resolve, reject){
+//   const random = Math.ceil(Math.random()*5);
+//   setTimeout(() => {
+//     if(random == 1){
+//       reject()
+//     }else{
+//       resolve("yes, veikia!")
+//     }}, 5000)
+// })
+// promise
+// .then(function() {
+//   return "this is a message"
+// }).then(function(result) {
+//   return alert(result)
+// }).catch(() => alert("something is bad!"))
