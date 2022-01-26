@@ -1676,7 +1676,6 @@ const data = [
 
 // 2.Sukurkite HTML formą, kurioje vartotojas galės įrašyti (į input laukelius): car brand, model, mileage, price ir image (url laukelis). Per konstruktorių, sukuriams objektas ir jis atvaizduojamas po forma (CSS rašykite CSS'e) kaip atvaizduota nuotraukoje apačioje. Paspaudus ant automobilio bloko - turi alert išmesti kainą.
 
-// -----
 // class MyFunction {
 //   constructor(b, mod, m, p, img) {
 //     this.brand = b;
@@ -1686,6 +1685,7 @@ const data = [
 //     this.img = img;
 //   }
 //   newBlock() {
+//     const price = this.price;
 //     this.imgBlock = document.createElement("div");
 //     this.imgBlock.className = "img";
 //     this.imgBlock.style.backgroundImage = "url(" + this.img + ")";
@@ -1693,18 +1693,14 @@ const data = [
 //     this.nameRow.textContent = this.brand + ", " + this.model;
 //     this.textRow = document.createElement("p");
 //     this.textRow.textContent = "Mileage: " + this.mileage + " miles";
-//     this.hiddenPrice = document.createElement("p");
-//     this.hiddenPrice.className = "hidden";
-//     this.hiddenPrice.textContent = this.price + " eur";
 //     this.carBlock = document.createElement("div");
 //     this.carBlock.className = "block";
 //     document.querySelector(".container").append(this.carBlock);
-//     this.carBlock.append(
-//       this.imgBlock,
-//       this.nameRow,
-//       this.textRow,
-//       this.hiddenPrice
-//     );
+//     this.carBlock.append(this.imgBlock, this.nameRow, this.textRow);
+//     this.alertPrice = function () {
+//       alert(price + " eur");
+//     };
+//     this.carBlock.addEventListener("click", this.alertPrice);
 //   }
 // }
 // document.querySelector("#forma5").addEventListener("submit", (e) => {
@@ -1723,13 +1719,6 @@ const data = [
 //   );
 //   newCarBlock.newBlock();
 // });
-// document
-//   .getElementsByClassName(".block")
-//   .addEventListener("click", () =>
-//     alert(
-//       document.getElementsByClassName(".block").lastElementChild.textContent
-//     )
-//   );
 
 // 3.Prisimename darbą su masyvais: sukurkite funkciją, kuri priims masyvą ir išfiltruos visus pasikartojančius skaičius bei šį masyvą grąžins atgal.
 // Pvz:
@@ -1806,3 +1795,26 @@ const data = [
 //   );
 // }
 // console.log(jazzify(["F", "E7", "A7", "Ab7", "Gm7", "C7"]));
+
+// Pratimai su Cookies ir LocalStorage
+
+// 1.Sukurk formą, kuri leis įrašyti vardą - jis bus išsaugojamas į cookies. Jei vardas jau egzistuoja - išmeta tik vardą ir mygtuką, su kuriuo cookies ištrinamas. Jei neegzistuoja - formą.
+
+document.querySelector("#forma6").addEventListener("submit", (e) => {
+  e.preventDefault;
+  const name = e.target.elements.name.value;
+  document.cookie = "name=" + name;
+  console.log(document.cookie);
+  if (document.cookie == "name=" + name) {
+    const h1 = document.createElement("h1");
+    h1.textContent = name;
+    const remove = document.createElement("button");
+
+    document.querySelector("#forma6").append(h1, remove);
+  }
+});
+// 2.Į localStorage, įrašykite savo vardą, pavardę, aprašymą, linkus į FB, G+, Twitter, linką į nuotrauką. Informaciją galite įrašyti per console'ę, arba naudojant kodą projekte pirmą kart užkraunant puslapį. Vėliau susikurkite puslapį, kuris atvaizduos šią informaciją būtent taip:
+
+localStorage.setItem();
+
+// 3.Sukurkite puslapį, kuriame būtų forma su vienu input - fullName. Įvedus vardą ir pavardę, juos padalina į dvi dalis (name ir surname). Vardą ir pavardę įdeda į objektą, o objektą - į array. Šį array išsaugo localStorage. Po forma, tegul būna lentelė, būtent joje atsivaizduoja informacija iš localStorage array.
