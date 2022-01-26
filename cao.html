@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAO pratimai</title>
+  </head>
+  <style>
+    table * {
+      border: 1px black solid;
+      padding: 0.5rem 3rem;
+    }
+    table {
+      margin-top: 1rem;
+      border-collapse: collapse;
+    }
+    #forma5 > input {
+      display: block;
+      margin-bottom: 1em;
+    }
+    .container {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 20rem));
+      text-align: center;
+    }
+    .container .block .img {
+      width: 13rem;
+      height: 10rem;
+      margin: auto;
+      margin-top: 1rem;
+      background-size: cover;
+      background-position: center center;
+    }
+    .container > * {
+      cursor: pointer;
+      background-color: #e7e7e7;
+      border-radius: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+  <body>
+    <!-- <h1 id="name">unknown</h1>
+  <ul>
+    <li>Pienas</li>
+    <li>Varske</li>
+    <li>Jautiena</li>
+  </ul>
+  <p class="redtext">This text will be in <span>red</span></p>
+  <p class="bluetext">This text will be in <span>red</span></p>
+  <p class="yellowtext">This text will be in yellow</p>
+<ol>
+  <li>BMW group</li>
+  <li>VW group</li>
+  <li>GE</li>
+</ol> -->
+    <!-- <button onclick="AlertName()" >Press</button> -->
+    <!-- <button>Press</button>
+<p class="aboutme"></p>
+<h1 id="plus"></h1>
+<button id="addnumber">+1</button>
+<p id="noCopy">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore exercitationem eos molestias autem molestiae quaerat aspernatur eaque unde tempora ullam id deserunt quae vel debitis nesciunt, quidem iure expedita. Vel.</p>
+<button id="random">Random number</button>
+<h1 id="randomNumber"></h1>
+<button id="adult">Turiu bent 18 metų</button>
+<button id="child">Mažiau nei 18 metų</button>
+<h1></h1>
+<button id="one">1 </button>
+<button id="two">2</button>
+<button id="three">3</button>
+<H1 id="noclick">Nespauskite mygtuko</H1>
+<button id="badbtn">mygtukas</button> -->
+    <!-- <h1 style="height: 150vh; line-height: 150vh;">Nejudinkite puslapio!</h1> -->
+
+    <!-- <form id="forma0">
+      <h1 id="age"></h1>
+      <input type="text" name="abc" placeholder="name" />
+      <input type="number" name="age" placeholder="Number" id="numberAge" />
+      <button type="submit" id="btnAdd">Add</button> <br />
+      <ul id="list"></ul> -->
+    <!-- <input type="checkbox" name="crime">ar neturite kriminalines istorijos? -->
+    <!-- <input type="number" placeholder="Number1" id="number1" />
+      <input type="number" placeholder="Number2" id="number2" />
+      <button id="btn100">Enter</button> <br />
+      <div id="div"></div>
+    </form>
+    <h2 id="leap"></h2>
+    <form>
+      <input type="email" id="email" placeholder="Email" /><br />
+      <input type="checkbox" id="news" />sutinku gauti laiškus <br />
+      <button type="submit" id="submitBtn">Enter</button>
+    </form>
+    <hr />
+    <h1 id="style">Tomas</h1>
+    <div id="rotate">
+      <button id="jump">Press</button>
+    </div>
+    <form id="forma">
+      <input type="text" id="word" placeholder="Name" />
+      <input type="text" id="surname" placeholder="Surname" />
+      <button id="btn2">Enter</button>
+      <h3></h3>
+    </form>
+    <hr />
+    <form id="degaline">
+      <input
+        type="number"
+        step="0.001"
+        name="kaina"
+        placeholder="degalu kaina uz litra"
+      />
+      <input
+        type="number"
+        step="0.1"
+        name="kiekis"
+        placeholder="degalu kiekis litrais"
+      />
+      <button>enter</button>
+    </form>
+    <hr />
+    <form id="fullName">
+      <input type="text" name="fullName" placeholder="Full name" />
+      <input type="submit" value="ENTER" />
+    </form>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+      </tr>
+    </table> -->
+    <form id="forma5">
+      <input type="text" id="brand" placeholder="Brand" />
+      <input type="text" id="model" placeholder="Model" />
+      <input type="number" id="mileage" placeholder="Mileage" />
+      <input type="number" id="price" placeholder="Price" />
+      <input type="url" id="image" placeholder="Image URL" />
+      <button type="submit">Add to list</button>
+    </form>
+    <div class="container"></div>
+    <script src="./src/js/cao.js"></script>
+  </body>
+</html>
