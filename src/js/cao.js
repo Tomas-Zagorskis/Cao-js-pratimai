@@ -1800,33 +1800,44 @@ const data = [
 
 // 1.Sukurk formą, kuri leis įrašyti vardą - jis bus išsaugojamas į cookies. Jei vardas jau egzistuoja - išmeta tik vardą ir mygtuką, su kuriuo cookies ištrinamas. Jei neegzistuoja - formą.
 
-let i = 1;
-i =
-  Number(
-    document.cookie.slice(
-      document.cookie.lastIndexOf("name") + 4,
-      document.cookie.lastIndexOf("=")
-    )
-  ) + 1;
-console.log(document.cookie);
-function setCookie(value) {
-  document.cookie =
-    "name" + i + "=" + value + ";  expires=Thu, 18 Dec 2033 12:00:00 UTC";
-  i++;
-}
-document.querySelector("#forma6").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const cookieValue = e.target.elements.name.value;
-  setCookie(cookieValue);
-  console.log(document.cookie.split("name"));
-  if (document.cookie == "name=" + cookieValue) {
-    const h1 = document.createElement("h1");
-    h1.textContent = cookieValue;
-    const remove = document.createElement("button");
-
-    document.querySelector("#forma6").append(h1, remove);
-  }
-});
+// i =
+//   Number(
+//     document.cookie.slice(
+//       document.cookie.lastIndexOf("name") + 4,
+//       document.cookie.lastIndexOf("=")
+//     )
+//   ) + 1;
+//   const cookieArray = document.cookie.split("; ").map((a)=>a.split("=")).join(",").split(",");
+//   function setCookie(value) {
+//     document.cookie =
+//     "name" + i + "=" + value + ";  expires=Thu, 18 Dec 2033 12:00:00 UTC";
+//     i++;
+//   }
+//   function removeCookie(value){
+//     const cname = cookieArray[cookieArray.indexOf(value)-1];
+//     document.cookie =
+//     cname + "=" + value + ";  expires=Thu, 18 Dec 2000 12:00:00 UTC"
+//   }
+//   document.querySelector("#forma6").addEventListener("submit", (e) => {
+//     const cookieValue = e.target.elements.name.value;
+//     if (cookieArray.includes(cookieValue)) {
+//       e.preventDefault();
+//       const h1 = document.createElement("h1");
+//       h1.textContent = cookieValue;
+//       const removeBtn = document.createElement("button");
+//       removeBtn.className = "removeBtn";
+//       removeBtn.textContent = "remove this cookie";
+//       document.querySelector("#forma6").append(h1, removeBtn);
+//       e.target.elements[0].style.display = "none";
+//       e.target.elements[1].style.display = "none";
+//       document.querySelector(".removeBtn").addEventListener("click", ()=>{
+//         removeCookie(cookieValue);
+//         location.reload();
+//       })
+//     }else {
+//       setCookie(cookieValue);
+//     }
+//   });
 
 // 2.Į localStorage, įrašykite savo vardą, pavardę, aprašymą, linkus į FB, G+, Twitter, linką į nuotrauką. Informaciją galite įrašyti per console'ę, arba naudojant kodą projekte pirmą kart užkraunant puslapį. Vėliau susikurkite puslapį, kuris atvaizduos šią informaciją būtent taip:
 
