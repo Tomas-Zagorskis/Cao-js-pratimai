@@ -1800,19 +1800,33 @@ const data = [
 
 // 1.Sukurk formą, kuri leis įrašyti vardą - jis bus išsaugojamas į cookies. Jei vardas jau egzistuoja - išmeta tik vardą ir mygtuką, su kuriuo cookies ištrinamas. Jei neegzistuoja - formą.
 
-// document.querySelector("#forma6").addEventListener("submit", (e) => {
-//   e.preventDefault;
-//   const name = e.target.elements.name.value;
-//   document.cookie = "name=" + name;
-//   console.log(document.cookie);
-//   if (document.cookie == "name=" + name) {
-//     const h1 = document.createElement("h1");
-//     h1.textContent = name;
-//     const remove = document.createElement("button");
+let i = 1;
+i =
+  Number(
+    document.cookie.slice(
+      document.cookie.lastIndexOf("name") + 4,
+      document.cookie.lastIndexOf("=")
+    )
+  ) + 1;
+console.log(document.cookie);
+function setCookie(value) {
+  document.cookie =
+    "name" + i + "=" + value + ";  expires=Thu, 18 Dec 2033 12:00:00 UTC";
+  i++;
+}
+document.querySelector("#forma6").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const cookieValue = e.target.elements.name.value;
+  setCookie(cookieValue);
+  console.log(document.cookie.split("name"));
+  if (document.cookie == "name=" + cookieValue) {
+    const h1 = document.createElement("h1");
+    h1.textContent = cookieValue;
+    const remove = document.createElement("button");
 
-//     document.querySelector("#forma6").append(h1, remove);
-//   }
-// });
+    document.querySelector("#forma6").append(h1, remove);
+  }
+});
 
 // 2.Į localStorage, įrašykite savo vardą, pavardę, aprašymą, linkus į FB, G+, Twitter, linką į nuotrauką. Informaciją galite įrašyti per console'ę, arba naudojant kodą projekte pirmą kart užkraunant puslapį. Vėliau susikurkite puslapį, kuris atvaizduos šią informaciją būtent taip:
 
@@ -1820,7 +1834,7 @@ const data = [
 
 // 3.Sukurkite puslapį, kuriame būtų forma su vienu input - fullName. Įvedus vardą ir pavardę, juos padalina į dvi dalis (name ir surname). Vardą ir pavardę įdeda į objektą, o objektą - į array. Šį array išsaugo localStorage. Po forma, tegul būna lentelė, būtent joje atsivaizduoja informacija iš localStorage array.
 
-// Praktika su JS pažadais
+// Praktika su JS pažadais (Promises)
 
 // 1.Parašykite pažadą, kuris visada resolve'insis po 5 sekundžių. Jam resolve - išoka alert "yes, veikia!". Pažado aprašyme teks naudoti setTimeOut.
 
@@ -1844,7 +1858,7 @@ const data = [
 // .then(() => alert("yes, veikia!"))
 // .catch(() => alert("something is bad!"))
 
-// 3.Then bendrauja su kitu then. Pakoreguokite antrą pratimą, kad jei resolve'inasi pirmas pažadas - pasileidžia then(), kuris paprasčiausiai grąžina žinutę , šią žinutę pagauna antrasis then() ir ją alertina. Prisiminkime - ką then() returnina, tą pasigauna kitas then() kaip parametrą. 
+// 3.Then bendrauja su kitu then. Pakoreguokite antrą pratimą, kad jei resolve'inasi pirmas pažadas - pasileidžia then(), kuris paprasčiausiai grąžina žinutę , šią žinutę pagauna antrasis then() ir ją alertina. Prisiminkime - ką then() returnina, tą pasigauna kitas then() kaip parametrą.
 
 // const promise = new Promise(function(resolve, reject){
 //   const random = Math.ceil(Math.random()*5);
