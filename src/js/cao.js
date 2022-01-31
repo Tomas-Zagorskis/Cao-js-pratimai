@@ -1800,39 +1800,92 @@ const data = [
 
 // 1.Sukurk formą, kuri leis įrašyti vardą - jis bus išsaugojamas į cookies. Jei vardas jau egzistuoja - išmeta tik vardą ir mygtuką, su kuriuo cookies ištrinamas. Jei neegzistuoja - formą.
 
-let i = 1;
-i =
-  Number(
-    document.cookie.slice(
-      document.cookie.lastIndexOf("name") + 4,
-      document.cookie.lastIndexOf("=")
-    )
-  ) + 1;
-console.log(document.cookie);
-function setCookie(value) {
-  document.cookie =
-    "name" + i + "=" + value + ";  expires=Thu, 18 Dec 2033 12:00:00 UTC";
-  i++;
-}
-document.querySelector("#forma6").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const cookieValue = e.target.elements.name.value;
-  setCookie(cookieValue);
-  console.log(document.cookie.split("name"));
-  if (document.cookie == "name=" + cookieValue) {
-    const h1 = document.createElement("h1");
-    h1.textContent = cookieValue;
-    const remove = document.createElement("button");
+// let i = 1;
+// i =
+//   Number(
+//     document.cookie.slice(
+//       document.cookie.lastIndexOf("name") + 4,
+//       document.cookie.lastIndexOf("=")
+//     )
+//   ) + 1;
+// console.log(document.cookie);
+// function setCookie(value) {
+//   document.cookie =
+//     "name" + i + "=" + value + ";  expires=Thu, 18 Dec 2033 12:00:00 UTC";
+//   i++;
+// }
+// document.querySelector("#forma6").addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const cookieValue = e.target.elements.name.value;
+//   setCookie(cookieValue);
+//   console.log(document.cookie.split("name"));
+//   if (document.cookie == "name=" + cookieValue) {
+//     const h1 = document.createElement("h1");
+//     h1.textContent = cookieValue;
+//     const remove = document.createElement("button");
 
-    document.querySelector("#forma6").append(h1, remove);
-  }
-});
+//     document.querySelector("#forma6").append(h1, remove);
+//   }
+// });
 
 // 2.Į localStorage, įrašykite savo vardą, pavardę, aprašymą, linkus į FB, G+, Twitter, linką į nuotrauką. Informaciją galite įrašyti per console'ę, arba naudojant kodą projekte pirmą kart užkraunant puslapį. Vėliau susikurkite puslapį, kuris atvaizduos šią informaciją būtent taip:
 
-// localStorage.setItem();
+// localStorage.setItem("name", "Tomas");
+// localStorage.setItem("surname", "Zagorskis");
+// localStorage.setItem(
+//   "info",
+//   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus facere explicabo corporis."
+// );
+// localStorage.setItem("fb", "https://www.facebook.com/");
+// localStorage.setItem("instagram", "https://www.instagram.com/");
+// localStorage.setItem(
+//   "photo",
+//   "C:Users/Tomas/Desktop/programavimas/Front-end/Darbas/src/imgphoto-99.jpg"
+// );
 
 // 3.Sukurkite puslapį, kuriame būtų forma su vienu input - fullName. Įvedus vardą ir pavardę, juos padalina į dvi dalis (name ir surname). Vardą ir pavardę įdeda į objektą, o objektą - į array. Šį array išsaugo localStorage. Po forma, tegul būna lentelė, būtent joje atsivaizduoja informacija iš localStorage array.
+
+// class CapitalizedName {
+//   constructor(input) {
+//     this.input = input;
+//   }
+//   capitalized() {
+//     this.name =
+//       this.input.split(" ")[0].charAt(0).toUpperCase() +
+//       this.input.split(" ")[0].slice(1).toLowerCase();
+//     this.surname =
+//       this.input.split(" ")[1].charAt(0).toUpperCase() +
+//       this.input.split(" ")[1].slice(1).toLowerCase();
+//     this.nameSurname = this.name + " " + this.surname;
+//     return this.nameSurname.split(" ");
+//   }
+// }
+// class MyFunction {
+//   constructor(arr) {
+//     this.name = arr[0];
+//     this.surname = arr[1];
+//     localStorage.setItem("name", this.name);
+//     localStorage.setItem("surname", this.surname);
+//   }
+//   newTable() {
+//     this.nameRow = document.createElement("td");
+//     this.nameRow.textContent = localStorage.getItem("name");
+//     this.surnameRow = document.createElement("td");
+//     this.surnameRow.textContent = localStorage.getItem("surname");
+//     this.tableRow = document.createElement("tr");
+//     document.querySelector("table").append(this.tableRow);
+//     this.tableRow.append(this.nameRow, this.surnameRow);
+//   }
+// }
+// document.querySelector("#fullName").addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const fullNameInput = document
+//     .querySelector("input[name=fullName]")
+//     .value.trim();
+//   const fullName = new CapitalizedName(fullNameInput);
+//   const nameForTable = new MyFunction(fullName.capitalized());
+//   nameForTable.newTable();
+// });
 
 // Praktika su JS pažadais (Promises)
 
@@ -1875,3 +1928,12 @@ document.querySelector("#forma6").addEventListener("submit", (e) => {
 // }).then(function(result) {
 //   return alert(result)
 // }).catch(() => alert("something is bad!"))
+
+
+// Pratimai su Fetch API
+
+// 1.Jums paskambino pažinčių portalas – jiems reikia staigiai sukurti front-endą, kuris pasiimtų duomenis iš https://randomuser.me/api/ir juos atvaizduotų panašioje kortelėje kaip čia (dizainas neturi atitikti, bet padarykit tvarkingai - jį galite pilnai su HTML/CSS pasirašyti, bet norintiems sunkumo - pabandykite ir su JS):
+
+// 2.Naudojant "https://boiling-reaches-93648.herokuapp.com/week-3/party" - pasiimkite informaciją iš šito puslapio ir naudojant skirtingus array metodus, transformuokite duomenis bei išmeskite true/false ekrane - ar "Kristupas Lapeika" yra VIP, ar ne?
+
+// 3. Organizuojate vestuves - pasiimkite informaciją iš "https://boiling-reaches-93648.herokuapp.com/week-3/wedding" ir atvaizduokite lentelėje: vardą, plusOne ir attending. Parašykite taip, kad plusOne ir attending būtų ne true/false, bet "+" arba "-".
