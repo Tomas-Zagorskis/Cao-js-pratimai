@@ -1811,7 +1811,6 @@ const data = [
 //       document.cookie.lastIndexOf("=")
 //     )
 //   ) + 1;
-<<<<<<< HEAD
 // console.log(document.cookie);
 // function setCookie(value) {
 //   document.cookie =
@@ -1831,39 +1830,6 @@ const data = [
 //     document.querySelector("#forma6").append(h1, remove);
 //   }
 // });
-=======
-//   const cookieArray = document.cookie.split("; ").map((a)=>a.split("=")).join(",").split(",");
-//   function setCookie(value) {
-//     document.cookie =
-//     "name" + i + "=" + value + ";  expires=Thu, 18 Dec 2033 12:00:00 UTC";
-//     i++;
-//   }
-//   function removeCookie(value){
-//     const cname = cookieArray[cookieArray.indexOf(value)-1];
-//     document.cookie =
-//     cname + "=" + value + ";  expires=Thu, 18 Dec 2000 12:00:00 UTC"
-//   }
-//   document.querySelector("#forma6").addEventListener("submit", (e) => {
-//     const cookieValue = e.target.elements.name.value;
-//     if (cookieArray.includes(cookieValue)) {
-//       e.preventDefault();
-//       const h1 = document.createElement("h1");
-//       h1.textContent = cookieValue;
-//       const removeBtn = document.createElement("button");
-//       removeBtn.className = "removeBtn";
-//       removeBtn.textContent = "remove this cookie";
-//       document.querySelector("#forma6").append(h1, removeBtn);
-//       e.target.elements[0].style.display = "none";
-//       e.target.elements[1].style.display = "none";
-//       document.querySelector(".removeBtn").addEventListener("click", ()=>{
-//         removeCookie(cookieValue);
-//         location.reload();
-//       })
-//     }else {
-//       setCookie(cookieValue);
-//     }
-//   });
->>>>>>> 77507bf73637b4c8fed350d2334676013e72752d
 
 // 2.Į localStorage, įrašykite savo vardą, pavardę, aprašymą, linkus į FB, G+, Twitter, linką į nuotrauką. Informaciją galite įrašyti per console'ę, arba naudojant kodą projekte pirmą kart užkraunant puslapį. Vėliau susikurkite puslapį, kuris atvaizduos šią informaciją būtent taip:
 
