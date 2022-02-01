@@ -1800,10 +1800,7 @@ const data = [
 
 // 1.Sukurk formą, kuri leis įrašyti vardą - jis bus išsaugojamas į cookies. Jei vardas jau egzistuoja - išmeta tik vardą ir mygtuką, su kuriuo cookies ištrinamas. Jei neegzistuoja - formą.
 
-<<<<<<< HEAD
 // let i = 1;
-=======
->>>>>>> 77507bf73637b4c8fed350d2334676013e72752d
 // i =
 //   Number(
 //     document.cookie.slice(
@@ -1932,7 +1929,6 @@ const data = [
 //   return alert(result)
 // }).catch(() => alert("something is bad!"))
 
-
 // Pratimai su Fetch API
 
 // 1.Jums paskambino pažinčių portalas – jiems reikia staigiai sukurti front-endą, kuris pasiimtų duomenis iš https://randomuser.me/api/ir juos atvaizduotų panašioje kortelėje kaip čia (dizainas neturi atitikti, bet padarykit tvarkingai - jį galite pilnai su HTML/CSS pasirašyti, bet norintiems sunkumo - pabandykite ir su JS):
@@ -1940,3 +1936,4 @@ const data = [
 // 2.Naudojant "https://boiling-reaches-93648.herokuapp.com/week-3/party" - pasiimkite informaciją iš šito puslapio ir naudojant skirtingus array metodus, transformuokite duomenis bei išmeskite true/false ekrane - ar "Kristupas Lapeika" yra VIP, ar ne?
 
 // 3. Organizuojate vestuves - pasiimkite informaciją iš "https://boiling-reaches-93648.herokuapp.com/week-3/wedding" ir atvaizduokite lentelėje: vardą, plusOne ir attending. Parašykite taip, kad plusOne ir attending būtų ne true/false, bet "+" arba "-".
+//
