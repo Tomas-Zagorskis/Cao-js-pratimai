@@ -1845,47 +1845,61 @@ const data = [
 
 // 3.Sukurkite puslapį, kuriame būtų forma su vienu input - fullName. Įvedus vardą ir pavardę, juos padalina į dvi dalis (name ir surname). Vardą ir pavardę įdeda į objektą, o objektą - į array. Šį array išsaugo localStorage. Po forma, tegul būna lentelė, būtent joje atsivaizduoja informacija iš localStorage array.
 
-// class CapitalizedName {
-//   constructor(input) {
-//     this.input = input;
-//   }
-//   capitalized() {
-//     this.name =
-//       this.input.split(" ")[0].charAt(0).toUpperCase() +
-//       this.input.split(" ")[0].slice(1).toLowerCase();
-//     this.surname =
-//       this.input.split(" ")[1].charAt(0).toUpperCase() +
-//       this.input.split(" ")[1].slice(1).toLowerCase();
-//     this.nameSurname = this.name + " " + this.surname;
-//     return this.nameSurname.split(" ");
-//   }
-// }
-// class MyFunction {
-//   constructor(arr) {
-//     this.name = arr[0];
-//     this.surname = arr[1];
-//     localStorage.setItem("name", this.name);
-//     localStorage.setItem("surname", this.surname);
-//   }
-//   newTable() {
-//     this.nameRow = document.createElement("td");
-//     this.nameRow.textContent = localStorage.getItem("name");
-//     this.surnameRow = document.createElement("td");
-//     this.surnameRow.textContent = localStorage.getItem("surname");
-//     this.tableRow = document.createElement("tr");
-//     document.querySelector("table").append(this.tableRow);
-//     this.tableRow.append(this.nameRow, this.surnameRow);
-//   }
-// }
-// document.querySelector("#fullName").addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const fullNameInput = document
-//     .querySelector("input[name=fullName]")
-//     .value.trim();
-//   const fullName = new CapitalizedName(fullNameInput);
-//   const nameForTable = new MyFunction(fullName.capitalized());
-//   nameForTable.newTable();
-// });
+class CapitalizedName {
+  constructor(input) {
+    this.input = input;
+  }
+  capitalized() {
+    this.name =
+      this.input.split(" ")[0].charAt(0).toUpperCase() +
+      this.input.split(" ")[0].slice(1).toLowerCase();
+    this.surname =
+      this.input.split(" ")[1].charAt(0).toUpperCase() +
+      this.input.split(" ")[1].slice(1).toLowerCase();
+    this.nameSurname = this.name + " " + this.surname;
+    return this.nameSurname.split(" ");
+  }
+}
+class MyFunction {
+  constructor(arr) {
+    this.name = arr[0];
+    this.surname = arr[1];
+  }
+  newTable() {
+    const getLocalStorageKey = localStorage.getItem("key");
+    if (getLocalStorageKey == null) {
+      localStorage.setItem(
+        "key",
+        JSON.stringify([{ name: this.name, surname: this.surname }])
+      );
+    } else {
+      let ciaYraMasyvas = JSON.parse(getLocalStorageKey);
+      ciaYraMasyvas.push({
+        name: this.name,
+        surname: this.surname,
+      });
+      localStorage.setItem("key", JSON.stringify(ciaYraMasyvas));
+    }
+    let ciaYraMasyvas = JSON.parse(getLocalStorageKey);
+    this.nameRow = document.createElement("td");
+    this.nameRow.textContent = ciaYraMasyvas[ciaYraMasyvas.length - 1].name;
+    this.surnameRow = document.createElement("td");
+    this.surnameRow.textContent =
+      ciaYraMasyvas[ciaYraMasyvas.length - 1].surname;
+    this.tableRow = document.createElement("tr");
+    document.querySelector("table").append(this.tableRow);
+    this.tableRow.append(this.nameRow, this.surnameRow);
+  }
+}
+document.querySelector("#fullName").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const fullNameInput = document
+    .querySelector("input[name=fullName]")
+    .value.trim();
+  const fullName = new CapitalizedName(fullNameInput);
+  const nameForTable = new MyFunction(fullName.capitalized());
+  nameForTable.newTable();
+});
 
 // Praktika su JS pažadais (Promises)
 
