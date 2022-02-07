@@ -2018,7 +2018,8 @@ const data = [
 //         "table"
 //       ).innerHTML += `<tr><td>${result.id}</td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
 //     });
-//   });
+//   })
+//   .catch((e) => console.log(e.message));
 
 // 2.Naudojant JS metodus, padalinkite vardą į dvi dalis: vardą ir pavardę (lentelėje).
 
@@ -2033,12 +2034,62 @@ const data = [
 //         result.name
 //       )}</td><td>${splitToSurname(result.name)}</td></tr>`;
 //     });
-//   });
+//   })
+//   .catch((e) => console.log(e.message));
 // splitToName = (fullName) => fullName.split(" ")[0];
-// splitToSurname = (fullName) => fullName.split(" ")[1];
+// splitToSurname = (fullName) => fullName.split(" ").slice(1).join(" ");
 
 // 3.Pridėkite prie lentelės (tarp id ir name) nuotrauką.
 
+// fetch("https://magnetic-melon-yam.glitch.me")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     document.body.innerHTML =
+//       "<table><tr><th>ID</th><th>Picture</th><th>Name</th><th>City</th><th>Favorite color</th></tr></table>";
+//     data.forEach((result) => {
+//       document.querySelector(
+//         "table"
+//       ).innerHTML += `<tr><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
+//     });
+//   })
+//   .catch((e) => console.log(e.message));
+
 // 4.Sukurkite checkbox virš lentelės su JS. Jį paspaudus, rodys tik tuos žmones, kurie yra VIP.
+
+// fetch("https://magnetic-melon-yam.glitch.me")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     document.body.innerHTML =
+//       "<input type='checkbox'>VIP<table><tr><th>ID</th><th>Picture</th><th>Name</th><th>City</th><th>Favorite color</th></tr></table>";
+//     data.forEach((result) => {
+//       document.querySelector(
+//         "table"
+//       ).innerHTML += `<tr><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
+//     });
+//     document.querySelector("input").addEventListener("click", () => {
+//       document.querySelector("table").innerHTML =
+//         "<tr><th>ID</th><th>Picture</th><th>Name</th><th>City</th><th>Favorite color</th></tr>";
+
+//       if (document.querySelector("input").checked == true) {
+//         data
+//           .filter((result) => result.vip == true)
+//           .forEach(
+//             (result) =>
+//               (document.querySelector(
+//                 "table"
+//               ).innerHTML += `<tr><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`)
+//           );
+//       } else {
+//         data.forEach((result) => {
+//           document.querySelector(
+//             "table"
+//           ).innerHTML += `<tr><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
+//         });
+//       }
+//     });
+//   })
+//   .catch((e) => console.log(e.message));
 
 // 5.Sukurkite virš lentelės ir search laukelį (forma su input type search ir mygtukas). Suvedus duomenis, lentelėje turi prasifiltruoti pagal vardą arba pavardę (fullname contains search string). Capitalizacija turėtų būti nesvarbi.
