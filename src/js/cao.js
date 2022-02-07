@@ -1950,7 +1950,95 @@ const data = [
 
 // 1.Jums paskambino pažinčių portalas – jiems reikia staigiai sukurti front-endą, kuris pasiimtų duomenis iš https://randomuser.me/api/ir juos atvaizduotų panašioje kortelėje kaip čia (dizainas neturi atitikti, bet padarykit tvarkingai - jį galite pilnai su HTML/CSS pasirašyti, bet norintiems sunkumo - pabandykite ir su JS):
 
+// fetch("https://randomuser.me/api")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     data.results.forEach((result) => {
+//       document.querySelector(".card-list").innerHTML += ` <div class="card">
+//         <img src="${result.picture.large}" alt="User photo" class="user-photo">
+//         <div class="user-title">
+//           <h2>${result.name.first} ${result.name.last}</h2>
+//           <h2 class="accent-title">${result.dob.age} years old</h2>
+//         </div>
+//         <p class="user-email">${result.email}</p>
+//       </div>`;
+//     });
+//   })
+//   .catch((e) => console.log(e.message));
+
 // 2.Naudojant "https://boiling-reaches-93648.herokuapp.com/week-3/party" - pasiimkite informaciją iš šito puslapio ir naudojant skirtingus array metodus, transformuokite duomenis bei išmeskite true/false ekrane - ar "Kristupas Lapeika" yra VIP, ar ne?
 
+// fetch("https://boiling-reaches-93648.herokuapp.com/week-3/party")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     document.body.innerHTML = "<select></select><button>VIP?</button>";
+//     data.forEach((result) => {
+//       document.querySelector("select").innerHTML += `
+//       <option value="${result.vip}">${result.name}</option>`;
+//     });
+//     document.querySelector("button").addEventListener("click", () => {
+//       alert(document.querySelector("select").value);
+//     });
+//   })
+//   .catch((e) => console.log(e.message));
+
 // 3. Organizuojate vestuves - pasiimkite informaciją iš "https://boiling-reaches-93648.herokuapp.com/week-3/wedding" ir atvaizduokite lentelėje: vardą, plusOne ir attending. Parašykite taip, kad plusOne ir attending būtų ne true/false, bet "+" arba "-".
-//
+
+// fetch("https://boiling-reaches-93648.herokuapp.com/week-3/wedding")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     document.body.innerHTML =
+//       "<table><tr><th>Name</th><th>Plus one</th><th>Attending</th></tr></table>";
+//     data.forEach((result) => {
+//       document.querySelector("table").innerHTML += `<tr><td>${
+//         result.name
+//       }</td><td>${myFunction(result.plusOne)}</td><td>${myFunction(
+//         result.attending
+//       )}</td></tr>`;
+//     });
+//   })
+//   .catch((e) => console.log(e.message));
+// let myFunction = (boolean) => (boolean === true ? "+" : "-");
+
+// Pratimas su Fetch metodu ir duomenų filtravimu
+
+// 1.Naudojant tik JS, sukurkite lentelę ir į ją įrašykite duomenis (id, name, city, fav_color).
+
+// fetch("https://magnetic-melon-yam.glitch.me")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     document.body.innerHTML =
+//       "<table><tr><th>ID</th><th>Name</th><th>City</th><th>Favorite color</th></tr></table>";
+//     data.forEach((result) => {
+//       document.querySelector(
+//         "table"
+//       ).innerHTML += `<tr><td>${result.id}</td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
+//     });
+//   });
+
+// 2.Naudojant JS metodus, padalinkite vardą į dvi dalis: vardą ir pavardę (lentelėje).
+
+// fetch("https://magnetic-melon-yam.glitch.me")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     document.body.innerHTML =
+//       "<table><tr><th>Name</th><th>Surname</th></tr></table>";
+//     data.forEach((result) => {
+//       document.querySelector("table").innerHTML += `<tr><td>${splitToName(
+//         result.name
+//       )}</td><td>${splitToSurname(result.name)}</td></tr>`;
+//     });
+//   });
+// splitToName = (fullName) => fullName.split(" ")[0];
+// splitToSurname = (fullName) => fullName.split(" ")[1];
+
+// 3.Pridėkite prie lentelės (tarp id ir name) nuotrauką.
+
+// 4.Sukurkite checkbox virš lentelės su JS. Jį paspaudus, rodys tik tuos žmones, kurie yra VIP.
+
+// 5.Sukurkite virš lentelės ir search laukelį (forma su input type search ir mygtukas). Suvedus duomenis, lentelėje turi prasifiltruoti pagal vardą arba pavardę (fullname contains search string). Capitalizacija turėtų būti nesvarbi.

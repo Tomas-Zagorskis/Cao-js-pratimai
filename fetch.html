@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API: pazinciu portalas</title>
+    <script src="src/js/cao.js" defer></script>
+    <style>
+      :root {
+        --lighter-grey: #ebebeb;
+        --light-grey: #b6b6b8;
+        --dark-grey: #424244;
+        --accent-clr: #00d6aa;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--lighter-grey);
+
+        box-sizing: border-box;
+      }
+      .card-list {
+        margin: auto;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--lighter-grey);
+        display: flex;
+        align-items: center;
+      }
+      .card {
+        width: 40vw;
+        margin: auto;
+        background-color: #ffffff;
+        text-align: left;
+      }
+      .card img {
+        padding: 0;
+        aspect-ratio: 9/10;
+        width: 100%;
+        margin-bottom: 5rem;
+      }
+      .card .user-title {
+        display: flex;
+        justify-content: space-between;
+      }
+      .card .user-title > * {
+        margin: 0;
+      }
+      .card .user-title,
+      .card .user-email {
+        padding: 0 2rem;
+        margin: 0;
+      }
+      .accent-title {
+        color: var(--accent-clr);
+      }
+      .card .user-email {
+        color: var(--light-grey);
+        margin-top: 0.25rem;
+        padding-bottom: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card-list"></section>
+  </body>
+</html>
