@@ -2062,11 +2062,11 @@ const data = [
 //   .then((data) => {
 //     console.log(data);
 //     document.body.innerHTML =
-//       "<input type='checkbox'>VIP<table><tr><th>ID</th><th>Picture</th><th>Name</th><th>City</th><th>Favorite color</th></tr></table>";
+//       "<form><input id='filter' placeholder='search for peoples'>      <input type='checkbox'>VIP</form><table><tr><th>ID</th><th>Picture</th><th>Name</th><th>City</th><th>Favorite color</th></tr></table>";
 //     data.forEach((result) => {
 //       document.querySelector(
 //         "table"
-//       ).innerHTML += `<tr><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
+//       ).innerHTML += `<tr class='person'><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td class='person'>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
 //     });
 //     document.querySelector("input").addEventListener("click", () => {
 //       document.querySelector("table").innerHTML =
@@ -2079,17 +2079,128 @@ const data = [
 //             (result) =>
 //               (document.querySelector(
 //                 "table"
-//               ).innerHTML += `<tr><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`)
+//               ).innerHTML += `<tr class='person'><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`)
 //           );
 //       } else {
 //         data.forEach((result) => {
 //           document.querySelector(
 //             "table"
-//           ).innerHTML += `<tr><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
+//           ).innerHTML += `<tr class='person'><td>${result.id}</td><td><img src="${result.image}" alt="photo"></td><td>${result.name}</td><td>${result.city}</td><td>${result.fav_color}</td></tr>`;
 //         });
 //       }
+//       document.querySelector("#filter").addEventListener("keyup", filterPeople);
 //     });
 //   })
 //   .catch((e) => console.log(e.message));
 
 // 5.Sukurkite virš lentelės ir search laukelį (forma su input type search ir mygtukas). Suvedus duomenis, lentelėje turi prasifiltruoti pagal vardą arba pavardę (fullname contains search string). Capitalizacija turėtų būti nesvarbi.
+
+// function filterPeople(e) {
+//   text = e.target.value;
+//   document.querySelectorAll(".person").forEach((person) => {
+//     const fullName = person.children.item(2).textContent;
+//     if (fullName.toLowerCase().indexOf(text) != -1) {
+//       person.style.display = "table-row";
+//     } else {
+//       person.style.display = "none";
+//     }
+//   });
+// }
+
+// Pratimas su Fetch Post
+
+// 1.Sukurkite puslapį, index.html, kurį užkrovus atsiranda lentelė su visais automobiliais iš base URL.
+
+// document.body.innerHTML = "";
+// const carTable = document.createElement("table");
+// const row = document.createElement("tr");
+// const carBrand = document.createElement("th");
+// const carModel = document.createElement("th");
+// carBrand.textContent = "Brand";
+// carModel.textContent = "Model";
+// carTable.append(row);
+// row.append(carBrand, carModel);
+// document.body.append(carTable);
+// fetch("https://olive-bead-glazer.glitch.me")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//     data.forEach((result) => {
+//       const carRow = document.createElement("tr");
+//       const brandName = document.createElement("td");
+//       const modelName = document.createElement("td");
+//       brandName.textContent = result.brand;
+//       modelName.textContent = result.model;
+//       carRow.append(brandName, modelName);
+//       carTable.append(carRow);
+//     });
+//   })
+//   .catch((e) => console.log(e.message));
+
+// 2.Sukurkite papildomą puslapį, add.html, kuriame būtų forma su dviem inputais - brand ir model; šie paduotų su post'u informaciją į base url (formatas: objektas su dviem properties: brand ir model).
+
+// const form = document.createElement("form");
+// const inputBrand = document.createElement("input");
+// const inputModel = document.createElement("input");
+// const btn = document.createElement("button");
+// inputBrand.setAttribute("placeholder", "Car brand name");
+// inputModel.setAttribute("placeholder", "Car model name");
+// btn.textContent = "Send";
+// document.body.prepend(form);
+// form.append(inputBrand, inputModel, btn);
+// document.querySelector("button").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   const data = {
+//     brand: inputBrand.value,
+//     model: inputModel.value,
+//   };
+//   fetch("https://olive-bead-glazer.glitch.me", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((response) => response.json())
+//     .then(() => location.reload())
+//     .catch((e) => console.log(e.message));
+// });
+
+// 3.Sukurkite notification - t.y. sėkmingai užpildžius formą ir gavus patvirtinimą, turi virš formos rašyti, kad duomenys sėkmingai išsaugoti; o jei blogai - išmesti errorą.
+
+// const form = document.createElement("form");
+// const inputBrand = document.createElement("input");
+// const inputModel = document.createElement("input");
+// const btn = document.createElement("button");
+// inputBrand.setAttribute("placeholder", "Car brand name");
+// inputModel.setAttribute("placeholder", "Car model name");
+// btn.textContent = "Send";
+// document.body.prepend(form);
+// form.append(inputBrand, inputModel, btn);
+// document.querySelector("button").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   const data = {
+//     brand: inputBrand.value,
+//     model: inputModel.value,
+//   };
+//   fetch("https://olive-bead-glazer.glitch.me", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((response) => response.json())
+//     .then(() => {
+//       alert("Duomenys sekmingai issaugoti.");
+//       // const h3 = document.createElement("h3");
+//       // h3.textContent = "Duomenys sekmingai issaugoti.";
+//       // document.body.prepend(h3);
+//       location.reload();
+//     })
+//     .catch(() => {
+//       const h3 = document.createElement("h3");
+//       h3.textContent = "Ivyko klaida keliant duomenis";
+//       document.body.prepend(h3);
+//     });
+// });
