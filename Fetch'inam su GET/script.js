@@ -13,5 +13,26 @@ fetch("https://golden-whispering-show.glitch.me")
         <button id="${result.id}">Delete</button>
       </div>`;
     });
+    // 3.Padarykite, kad paspaudus delete mygtuką - back-end'ui būtų išsiunčiamas Fetch Delete Request (baseURL + /:id). T.y. į url turėsite paduoti produkto ID parametrą (pvz.: DELETE baseURL/1 ištrins pirmą įrašą).
+
+    document.querySelectorAll(".item-card button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.id;
+        console.log(document.querySelectorAll(".item-card button"));
+        fetch(`https://golden-whispering-show.glitch.me/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: id }),
+        })
+          // 4. Padarykite, kad ištrynus produktą - puslapis persikrautų. Taip nėra labai efektyvu - pagalvokite, kokiais kitais būdais galima būtų pasiekti šį rezultatą? Hint: gavus success message iš back-end'o filtruoti duomenis ir ištrinti su front-end'u irgi.
+          .then((res) => res.json())
+          .then(() => {
+            alert("Delete successful");
+            location.reload();
+          });
+      });
+    });
   })
   .catch((e) => console.log(e.message));
