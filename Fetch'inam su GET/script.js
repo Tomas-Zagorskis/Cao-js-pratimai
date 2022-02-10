@@ -18,7 +18,7 @@ fetch("https://golden-whispering-show.glitch.me")
     document.querySelectorAll(".item-card button").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.id;
-        console.log(document.querySelectorAll(".item-card button"));
+        btn.parentElement.style.display = "none";
         fetch(`https://golden-whispering-show.glitch.me/${id}`, {
           method: "DELETE",
           headers: {
@@ -27,10 +27,10 @@ fetch("https://golden-whispering-show.glitch.me")
           body: JSON.stringify({ id: id }),
         })
           // 4. Padarykite, kad ištrynus produktą - puslapis persikrautų. Taip nėra labai efektyvu - pagalvokite, kokiais kitais būdais galima būtų pasiekti šį rezultatą? Hint: gavus success message iš back-end'o filtruoti duomenis ir ištrinti su front-end'u irgi.
-          .then((res) => res.json())
+          .then((res) => console.log(res))
           .then(() => {
             alert("Delete successful");
-            location.reload();
+            // location.reload();
           });
       });
     });
